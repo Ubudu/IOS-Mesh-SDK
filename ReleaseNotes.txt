@@ -1,0 +1,45 @@
+
+------------------------------------------
+Ubudu Mesh SDK Version 0.1 - Release Notes
+------------------------------------------
+
+Platform Support
+----------------
+	- iOS 7.x or higher
+	- iPhone 4S / iPad 3rd gen. / iPod 5th gen. or more recent
+
+
+Features Added
+--------------
+
+None
+
+
+Improvements Done
+-----------------
+
+None
+
+
+Issues Addressed
+----------------
+
+None
+
+
+Known Issues
+------------
+
+None
+
+Compatibility
+-------------
+
+The API of the SDK may change without notice until the SDK reaches version 1.0.
+
+
+Change history
+--------------
+
+Version 0.1
+	- First beta release of the SDK.
