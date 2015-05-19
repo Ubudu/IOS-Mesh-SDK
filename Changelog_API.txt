@@ -1,0 +1,15 @@
+
+-------------------------------------------------------------------------------
+This document contains a list of changes to the Ubudu Indoor Location SDK API.
+Each Error code, Class, Method, Property, Function, or MACRO will be marked as follows:
+'NEW': API code that was added to the release.
+'CHANGED': API code that has been changed since the last release.
+'REMOVED': API code that has been deleted from the release and can no longer be
+           used.
+'DEPRECATED': API code that has been marked as deprecated.
+
+Each addition should contain a short explanation of what added or changed.
+For more information please refer to the API documentation.
+-------------------------------------------------------------------------------
+
+Until version 1.0 API may change without notice.
