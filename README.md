@@ -78,7 +78,7 @@ _Few properties are required and set previously from the manager plateform_
 
 The `UBUMeshBeaconManagerDelegate` provides callback method which you can implement to recieve events from the mesh beacon manager.
 
-Implement the method below to receive events that are interest for your application :  
+Implement the method below to receive events that interest your application :  
 `- (void)meshManager:(UBUMeshBeaconManager *)meshManager didUpdateVisibleAndConnectableNodes:(NSArray *)meshNodes;`
 
 Two methods to enable and disable that callback can be call from the `UBUMeshBeaconManager` :
@@ -89,7 +89,7 @@ Two methods to enable and disable that callback can be call from the `UBUMeshBea
 
 ## V. Create your own app.
 
-Once the framework include in the project, you are now able to initialized the manager and to set the delegate.
+Once the framework included in the project, you are now able to initialize the manager and to set the delegate.
 
 ```
 	/// Manager setup
@@ -100,7 +100,7 @@ Once the framework include in the project, you are now able to initialized the m
 Here we define the elements we did set in the manager plateform *(cf: II. Project configuration )* :
 
 - A **message** or references to send through the mesh network (max:16bytes).
-- An **endpoint** is an mesh becon id (the target), on the manager the target can have a status : node connected to internet.
+- An **endpoint** is an mesh beacon id (the target), on the manager the target can have a status : node connected to internet.
 - A **networkId** is the id of a mesh network that you want to join. (the same network id, can contains some mesh beacon connectable, mesh beacon none connectable, and also mesh beacon connected to the internet).
 
 ```
