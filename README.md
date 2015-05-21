@@ -9,11 +9,6 @@ For iBeacon related features:
 iOS 7.0 or higher (IOS 7.1.2 or iOS 8.0+ recommended)
 iPhone 4S / iPad 3rd generation / iPad mini / iPod touch 5th generation, or any more recent device.
 
-For geofencing :
-
-iOS 6.0 or higher
-iPhone 4 or more recent
-
 ## I. Adding the Ubudu SDK to a project.
 
 Starting to use the ubudu mesh SDK on iOS native app should be a few minutes to process.
