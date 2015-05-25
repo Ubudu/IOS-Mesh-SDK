@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="ufC-wZ-h7g">
+            <objects>
+                <viewController id="vXZ-lx-hvc" customClass="ViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
+                        <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MQh-1y-G9w">
+                                <rect key="frame" x="0.0" y="530" width="600" height="70"/>
+                                <color key="backgroundColor" red="0.13725490200000001" green="0.59999999999999998" blue="0.85490196080000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="70" id="NIo-Ie-tci"/>
+                                </constraints>
+                                <color key="tintColor" red="0.13725490200000001" green="0.59999999999999998" blue="0.85490196080000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="No Connectable Beacon Arround">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <state key="disabled">
+                                    <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="buttonClick:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="mYi-tr-DyZ"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="- Loading -" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yms-q5-5fm">
+                                <rect key="frame" x="0.0" y="206" width="600" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="ZeQ-Wd-UTM"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="yms-q5-5fm" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="186" id="1pj-tT-1lN"/>
+                            <constraint firstAttribute="trailing" secondItem="MQh-1y-G9w" secondAttribute="trailing" id="7HA-jL-FN0"/>
+                            <constraint firstAttribute="trailing" secondItem="yms-q5-5fm" secondAttribute="trailing" id="SeH-bV-xoY"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="MQh-1y-G9w" secondAttribute="bottom" id="rqR-u9-R49"/>
+                            <constraint firstItem="yms-q5-5fm" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="yyj-XW-Fpl"/>
+                            <constraint firstItem="MQh-1y-G9w" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="zLi-dC-5VR"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="btContact" destination="MQh-1y-G9w" id="uao-Fo-10t"/>
+                        <outlet property="lblTextHolder" destination="yms-q5-5fm" id="2up-Zl-Qo3"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+    </scenes>
+</document>
