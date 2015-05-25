@@ -142,8 +142,6 @@
 
 - (void)meshManager:(UBUMeshBeaconManager *)meshManager didUpdateVisibleAndConnectableNodes:(NSArray *)meshNodes
 {
-    [UIImage imageNamed:@"pin-ubudu"];
-    [UIColor colorWithRed:0.145 green:0.850 blue:0.171 alpha:1.000];
     self.nbOfConnectableNodes = 0;
     for (UBUMeshBeacon *node in meshNodes) {
         if( node.identifier != nil && node.isConnectable ){
