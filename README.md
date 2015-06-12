@@ -1,62 +1,89 @@
 # IOS-Mesh-SDK
 
-Ubudu mesh SDK for iOS allows devices to establish a connection to a mesh network and to send messages through it.
+ubudu Mesh SDK for iOS allows devices to connect to a Mesh network, in order to create two-way communication.
 
-### System and hardware requirements
+The following details the steps to add Mesh capability to your iOS app. 
+
+To help you further, we're giving you an [Example](https://github.com/Ubudu/IOS-Mesh-SDK/tree/master/Example) of sample implementation code.   
+
+## System and hardware requirements
 
 For iBeacon related features:
 
-iOS 7.0 or higher (IOS 7.1.2 or iOS 8.0+ recommended)
-iPhone 4S / iPad 3rd generation / iPad mini / iPod touch 5th generation, or any more recent device.
+- iOS 7.0 or higher (IOS 7.1.2 or iOS 8.0+ recommended).
 
-## I. Adding the Ubudu SDK to a project.
+- iPhone 4S / iPad 3rd generation / iPad mini / iPod touch 5th generation, or any more recent device.
 
-Starting to use the ubudu mesh SDK on iOS native app should be a few minutes to process.
+## Configure your Mesh network 
+
+First of all, you have to prepare your uBeacon Mesh devices, and to setup the Mesh network properties from the [ubudu Manager](https://manager.ubudu.com/). If you're following the step-by-step instructions in ubudu's Knowledge Base, then you should already have done it. Go straight to the next chapter.
+
+Otherwise: 
+
+Once logged in, go to the tab 'Devices', 'Edit' the beacon you want to configure, then you'll reach the **Mesh network settings** at the bottom of the page. Now, you'll be able to setup :
+
+- The UUID of the Mesh network
+- The Mesh network settings 
+- The beacon ID in the Mesh network
+- Indicate if the node is connected to the Internet
+
+## Add the SDK to a project
+
+Setting up the ubudu Mesh SDK on an iOS native app only takes a few minutes, either using CocoaPods (recommended) or manually.
 
 ### Using CocoaPods
 
-This is the prefered and simplest way to get started. Just add the following line to your Podfile
+This is the easiest way to get started. Add to your Podfile the line `pod 'UbuduMeshSDK'`, then execute `pod install`.
 
-`pod 'UbuduMeshSDK'` then execute `pod install`.
-
-If you are not already using CocoaPods for your project you can get started by reading the [CocoaPods documentation](https://guides.cocoapods.org/).
+If you are not already using CocoaPods for your project, you can get started by reading the [CocoaPods documentation](https://guides.cocoapods.org/).
 
 
 ### Manually
 
-If you don't want to use CocoaPods you can install the SDK manually by following the instructions bellow.
+If you don't want to use CocoaPods, you can manually install the SDK:
 
-1. Drag & drop the **UbuduMeshSDK.framework** folder into the Frameworks folder of your project in XCode. Check the **"Copy items into destination group's folder (if needed)"** option.
+1. **Drag & drop the *UbuduMeshSDK.framework* folder** into the "Frameworks" folder of your project in XCode. If needed, check the "Copy items into destination group's folder" option.
 
-2. Add the following list of frameworks and libraries to your project if they are not already present.
+2. **Add the following list of frameworks and libraries** to your project, if not already displayed.
+	 - "Foundation"
+	 - "CoreBluetooth"
+	 
 
-	- "Foundation"
-	- "CoreBluetooth"
-
-3. In the project settings go to : `"General"->"Your Target"->"Build Settings"->"(All)"->"Other Linker Flags"` Then add the following flags: `-ObjC`.
-
-
-## II. Project configuration
-
-First of all, you have to prepare your beacons and setup the mesh properties from the [manager plateform](https://manager.ubudu.com/).
-
-Basicly you need to configure in **Mesh network settings**.
-
-- Setup Mesh Network Id.
-- Setup Mesh General Settings.
-- Setup the beacon id in the mesh network.
-- Setup the Mesh relay node
+3. In your project settings, follow the steps `"General"` > `"Your Target"` > `"Build Settings"` > `"(All)"` > `"Other Linker Flags"`. Then, add the flag `-ObjC`.
 
 
-## III. Get started with the SDK - Objective-C.
+## Import the SDK
+
+Import the SDK in the header file.
+
+`#import <UbuduMeshSDK/UbuduMeshSDK.h>` 
+
+## Start/stop the service
+
+To use Mesh in your app you need to start the service :`UBeaconMeshManager * meshManager` 
+
+It may done by calling  `[self.meshManager startScanning]`.
+
+`startScanning` method starts the search for enabled Mesh beacons.
+
+To stop searching for Mesh beacons, call the `stopScanning` method. 
 
 
-Import SDK : `#import <UbuduMeshSDK/UbuduMeshSDK.h>`
+## Discover nearby Mesh beacons 
 
-In order to use the method :
-`sendMeshMEssage`.
+`UBUMeshBeaconManagerDelegate` provides callback method which you can implement to receive events from the ubudu Manager:
 
-_Few properties are required and set previously from the manager plateform_
+Implement the method below to receive events relevant to your application :  
+`- (void)meshManager:(UBUMeshBeaconManager *)meshManager didUpdateVisibleAndConnectableNodes:(NSArray *)meshNodes;`
+
+`meshManager` method callbacks :
+
+- `meshNodes` : array of objects of `UBUMeshBeacon` class
+
+
+## Send a message 
+
+To send message through a Mesh network, use the following method :
 
 ```
 - (void)sendMeshMessage:(NSString *)meshMessage
@@ -68,92 +95,19 @@ _Few properties are required and set previously from the manager plateform_
             failedBlock:(UBeaconMeshManagerFailedBlock)failedBlock;
 ```
 
+`sendMeshMessage` method parameters:
 
-## IV. Ubudu Mesh Delegate.
+- **meshMessage** is a string containing the Mesh message to be send. It should be no longer than 16 bytes.
 
-The `UBUMeshBeaconManagerDelegate` provides callback method which you can implement to recieve events from the mesh beacon manager.
+- **networkId** is a string containing the Mesh network UUID. ```meshId``` should be part of the network.
 
-Implement the method below to receive events that interest your application :  
-`- (void)meshManager:(UBUMeshBeaconManager *)meshManager didUpdateVisibleAndConnectableNodes:(NSArray *)meshNodes;`
+- **address** may be the target Mesh beacon address in decimal format. The value Should be between 1-32767.
 
-Two methods to enable and disable that callback can be call from the `UBUMeshBeaconManager` :
+`sendMeshMessage` method callbacks :
 
-- `startScanning` to scan around and it trigger the method describe previously.
-- `stopScanning` to stop the scan.
+- `successBlock` indicates whether the message was sent or not
+- `progressBlock` indicates the retries _(10times)_ after a failure
+- `failedBlock` indicates failure to send the message. Failure can be cause by a time out / nearby node not connectable / mesh service missed.
 
-
-## V. Create your own app.
-
-Once the framework included in the project, you are now able to initialize the manager and to set the delegate.
-
-```
-	/// Manager setup
-    self.meshManager = [UBUMeshBeaconManager sharedInstance];
-    self.meshManager.delegate = self;
-```
-
-Here we define the elements we did set in the manager plateform *(cf: II. Project configuration )* :
-
-- A **message** or references to send through the mesh network (max:16bytes).
-- An **endpoint** is an mesh beacon id (the target), on the manager the target can have a status : node connected to internet.
-- A **networkId** is the id of a mesh network that you want to join. (the same network id, can contains some mesh beacon connectable, mesh beacon none connectable, and also mesh beacon connected to the internet).
-
-```
-    /// definition
-    NSString * messageToSend = @"Hello World"; /// short message or reference to long speach
-    NSString * networkId = @"F80ECE82-9749-A840-17B1-1500EDABF6FF"; /// mesh network id
-    unsigned  endpoint = 16449; /// Mesh device id
-    
-    [self.meshManager sendMeshMessage:messageToSend
-                            networkId:[[NSUUID alloc] initWithUUIDString:networkId]
-                             toDevice:(uint16_t)endpoint
-                 disconnectImmediatly:YES
-                         successBlock:^(UBUMeshBeaconManager *manager, UBUMeshBeacon *meshBeacon, NSDictionary *userInfo)
-                         {
-                             /// on success
-                             NSString *log = @"success : message sent ";
-                             NSLog(log);
-                         }
-                         progressBlock:^(UBUMeshBeaconManager *manager, NSDictionary *userInfo)
-                         {
-                             /// to check in progress / retry
-                             NSString *log = @"Retry in progress...";
-                             NSLog(log);
-                         }
-                         failedBlock:^(UBUMeshBeaconManager *manager, UBUMeshBeacon *meshBeacon, NSDictionary *userInfo, NSError *error)
-                         {
-                             /// Log on failure
-                             NSString *log = @"message not sent, but not reached";
-                             NSLog(log);
-                         }]; 
-```
-
-The code below is an illustration of where you can start and stop the scanning.
-
-``` 
-/// we can start the scanning here StartScanning
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    // mesh setup
-    [self meshSetup];
-    [self.meshManager startScanning];
-}
-
-/// we can stop the scanning here.
-- (void)viewDidDisappear:(BOOL)animated
-{
-    [self.meshManager stopScanning];
-}
-```
-
-Finaly the implementation of the methode delegate.
-
-```
-	/// An example of meshdelegate implementation
-	- (void)meshManager:(UBUMeshBeaconManager *)meshManager didUpdateVisibleAndConnectableNodes:(NSArray *)meshNodes
-{
-	/// implemente here the action to sendMeshMessage for example.
-}
-```
 
 
