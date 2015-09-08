@@ -2,7 +2,7 @@
 //  UBUMeshBeacon.h
 //  UbuduMeshSDK
 //
-// Copyright (c) 2011-2015, UBUDU SAS
+// Copyright (c) 2015, UBUDU SAS
 // All rights reserved.
 //
 // Redistribution and use in source and binary forms, with or without
@@ -64,6 +64,14 @@ typedef void (^UMeshBeaconFailedBlock)(UBUMeshBeacon *meshBeacon, NSDictionary *
 
 - (void)sendMeshMessageWithData:(NSData *)meshMessageData
              toDeviceAdressData:(NSData *)addressData
+           disconnectImmediatly:(BOOL)disconnect
+                   successBlock:(UMeshBeaconSuccessBlock)successBlock
+                  progressBlock:(UMeshBeaconProgressBlock)progressBlock
+                    failedBlock:(UMeshBeaconFailedBlock)failedBlock;
+
+- (void)sendMeshMessageWithData:(NSData *)meshMessageData
+             toDeviceAdressData:(NSData *)addressData
+               withConfirmation:(BOOL)confirmation
            disconnectImmediatly:(BOOL)disconnect
                    successBlock:(UMeshBeaconSuccessBlock)successBlock
                   progressBlock:(UMeshBeaconProgressBlock)progressBlock

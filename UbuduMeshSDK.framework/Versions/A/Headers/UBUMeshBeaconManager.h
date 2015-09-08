@@ -2,7 +2,7 @@
 //  UBUMeshBeaconManager.h
 //  UbuduMeshSDK
 //
-// Copyright (c) 2011-2015, UBUDU SAS
+// Copyright (c) 2015, UBUDU SAS
 // All rights reserved.
 //
 // Redistribution and use in source and binary forms, with or without
@@ -59,8 +59,18 @@ typedef void (^UBeaconMeshManagerProgressBlock)(UBUMeshBeaconManager *manager, N
           progressBlock:(UBeaconMeshManagerProgressBlock)progressBlock
             failedBlock:(UBeaconMeshManagerFailedBlock)failedBlock;
 
+- (void)sendMeshMessage:(NSString *)meshMessage
+              networkId:(NSUUID *)networkId
+               toDevice:(uint16_t)address
+       withConfirmation:(BOOL)confirmation
+   disconnectImmediatly:(BOOL)disconnect
+           successBlock:(UBeaconMeshManagerSuccessBlock)successBlock
+          progressBlock:(UBeaconMeshManagerProgressBlock)progressBlock
+            failedBlock:(UBeaconMeshManagerFailedBlock)failedBlock;
+
 - (void)connectToClosestBeacon:(UBeaconMeshManagerSuccessBlock)successBlock
                  progressBlock:(UBeaconMeshManagerProgressBlock)progressBlock
                    failedBlock:(UBeaconMeshManagerFailedBlock)failedBlock;
 
+- (void)disconnectFromConnectedBeacon;
 @end

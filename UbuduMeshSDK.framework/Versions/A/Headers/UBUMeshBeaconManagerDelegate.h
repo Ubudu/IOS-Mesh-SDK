@@ -2,7 +2,7 @@
 //  UBUMeshBeaconManagerDelegate.h
 //  UbuduMeshSDK
 //
-// Copyright (c) 2011-2015, UBUDU SAS
+// Copyright (c) 2015, UBUDU SAS
 // All rights reserved.
 //
 // Redistribution and use in source and binary forms, with or without
@@ -36,5 +36,6 @@
 
 @optional
 - (void)meshManager:(UBUMeshBeaconManager *)meshManager didUpdateVisibleAndConnectableNodes:(NSArray *)meshNodes;
-
+- (void)meshManager:(UBUMeshBeaconManager *)meshManager didReceiveMeshData:(NSData *)meshData from:(NSData *)sourceAddress;
+- (void)meshManager:(UBUMeshBeaconManager *)meshManager didDisconnectFromBeacon:(UBUMeshBeacon *)meshBeacon;
 @end

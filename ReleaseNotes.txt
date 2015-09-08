@@ -1,6 +1,6 @@
 
 ------------------------------------------
-Ubudu Mesh SDK Version 0.1 - Release Notes
+Ubudu Mesh SDK Version 1.0 - Release Notes
 ------------------------------------------
 
 Platform Support
@@ -12,14 +12,15 @@ Platform Support
 Features Added
 --------------
 
-None
+* Added possibility to receive mesh messages when connected. (2-way communication)
+* Send mesh message with or without confirmation (ACK)
+* Added possibility to stay connected with mesh beacon after sending message
 
+Improvements
+------------
 
-Improvements Done
------------------
-
-None
-
+* Added support for uBeacons with 2.2 firmware
+* Stability improvements
 
 Issues Addressed
 ----------------
@@ -40,6 +41,13 @@ The API of the SDK may change without notice until the SDK reaches version 1.0.
 
 Change history
 --------------
+
+Version 1.0
+	- Added possibility to receive mesh messages when connected. (2-way communication)
+	- Send mesh message with or without confirmation (ACK)
+	- Added possibility to stay connected with mesh beacon after sending message
+	- Added support for uBeacons with 2.2 firmware
+	- Stability improvements
 
 Version 0.1
 	- First beta release of the SDK.
