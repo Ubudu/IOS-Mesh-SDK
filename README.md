@@ -89,6 +89,7 @@ To send message through a Mesh network, use the following method :
 - (void)sendMeshMessage:(NSString *)meshMessage
               networkId:(NSUUID *)networkId
                toDevice:(uint16_t)address
+       withConfirmation:(BOOL)confirmation
    disconnectImmediatly:(BOOL)disconnect
            successBlock:(UBeaconMeshManagerSuccessBlock)successBlock
           progressBlock:(UBeaconMeshManagerProgressBlock)progressBlock
@@ -109,5 +110,10 @@ To send message through a Mesh network, use the following method :
 - `progressBlock` indicates the retries _(10times)_ after a failure
 - `failedBlock` indicates failure to send the message. Failure can be cause by a time out / nearby node not connectable / mesh service missed.
 
+## Receive a message
 
+If iOS device is connected to mesh beacon it will be notified about incoming message via the delegate method
+`- (void)meshManager:(UBUMeshBeaconManager *)meshManager didReceiveMeshData:(NSData *)meshData from:(NSData *)sourceAddress;`
 
+- **meshData** is the package of data received
+- **sourceAddress** is the sender's address
