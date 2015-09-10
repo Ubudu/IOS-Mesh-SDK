@@ -12,15 +12,12 @@ Platform Support
 Features Added
 --------------
 
-* Added possibility to receive mesh messages when connected. (2-way communication)
-* Send mesh message with or without confirmation (ACK)
-* Added possibility to stay connected with mesh beacon after sending message
+None
 
 Improvements
 ------------
 
-* Added support for uBeacons with 2.2 firmware
-* Stability improvements
+* Remove spammy logs
 
 Issues Addressed
 ----------------
@@ -41,6 +38,9 @@ The API of the SDK may change without notice until the SDK reaches version 1.0.
 
 Change history
 --------------
+
+Version 1.0.1
+	- Remove spammy logs
 
 Version 1.0
 	- Added possibility to receive mesh messages when connected. (2-way communication)
