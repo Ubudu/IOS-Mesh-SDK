@@ -44,6 +44,11 @@ typedef void (^UBeaconMeshManagerProgressBlock)(UBUMeshBeaconManager *manager, N
 @property (nonatomic, weak) id <UBUMeshBeaconManagerDelegate> delegate;
 @property (nonatomic, strong) UBUMeshBeacon *connectedBeacon;
 
+/**
+ *  Version of the SDK.
+ */
+@property (nonatomic, readonly) NSString *version;
+
 + (UBUMeshBeaconManager *)sharedInstance;
 
 - (BOOL)startScanning;

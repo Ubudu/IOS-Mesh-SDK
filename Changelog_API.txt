@@ -12,4 +12,11 @@ Each addition should contain a short explanation of what added or changed.
 For more information please refer to the API documentation.
 -------------------------------------------------------------------------------
 
-Until version 1.0 API may change without notice.
+Ubudu SDK API Changes betweem v1.0.1 and v1.0.2
+-------------------------------------------------
+
+NEW PROPERTY
+UBUMeshBeaconManager.version
+	Version of the mesh SDK
+
+
